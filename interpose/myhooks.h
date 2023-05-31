@@ -10,4 +10,6 @@
 
 #include <stdio.h>
 
+void install_my_hooks(void);
+
 #endif /* myhooks_h */

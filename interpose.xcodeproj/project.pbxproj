@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2B7762A629DC12CB0005928F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7762A529DC12CB0005928F /* main.swift */; };
+		2B7762AF29DC131B0005928F /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B7762AE29DC131B0005928F /* fishhook.c */; };
+		2B7762B229DC15030005928F /* myhooks.c in Sources */ = {isa = PBXBuildFile; fileRef = 2B7762B129DC15030005928F /* myhooks.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,11 @@
 /* Begin PBXFileReference section */
 		2B7762A229DC12CB0005928F /* interpose */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = interpose; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B7762A529DC12CB0005928F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		2B7762AC29DC131A0005928F /* interpose-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "interpose-Bridging-Header.h"; sourceTree = "<group>"; };
+		2B7762AD29DC131B0005928F /* fishhook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
+		2B7762AE29DC131B0005928F /* fishhook.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
+		2B7762B029DC15030005928F /* myhooks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myhooks.h; sourceTree = "<group>"; };
+		2B7762B129DC15030005928F /* myhooks.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = myhooks.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +65,11 @@
 			isa = PBXGroup;
 			children = (
 				2B7762A529DC12CB0005928F /* main.swift */,
+				2B7762AD29DC131B0005928F /* fishhook.h */,
+				2B7762AE29DC131B0005928F /* fishhook.c */,
+				2B7762AC29DC131A0005928F /* interpose-Bridging-Header.h */,
+				2B7762B029DC15030005928F /* myhooks.h */,
+				2B7762B129DC15030005928F /* myhooks.c */,
 			);
 			path = interpose;
 			sourceTree = "<group>";
@@ -94,6 +106,7 @@
 				TargetAttributes = {
 					2B7762A129DC12CB0005928F = {
 						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
 					};
 				};
 			};
@@ -120,7 +133,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B7762AF29DC131B0005928F /* fishhook.c in Sources */,
 				2B7762A629DC12CB0005928F /* main.swift in Sources */,
+				2B7762B229DC15030005928F /* myhooks.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,8 +258,16 @@
 		2B7762AA29DC12CB0005928F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "interpose/interpose-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -252,8 +275,15 @@
 		2B7762AB29DC12CB0005928F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "interpose/interpose-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
